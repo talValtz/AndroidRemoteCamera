@@ -75,7 +75,7 @@ I separated the responsibility between sending a command and handling the server
 
 - Then run the client:
   ```bash
-  python client.py
+  python main.py
   ```
 
   ## Project Structure
