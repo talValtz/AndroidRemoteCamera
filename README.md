@@ -64,7 +64,7 @@ I separated the responsibility between sending a command and handling the server
 
 ###  Client Side (Python Script)
 - Open the `Client` folder.
-- Open `main.py`.
+- Open `constants.py`.
 - **Update the IP address** at the top of the file:
   ```python
   HOST = 'YOUR_PHONE_IP_ADDRESS'  # <-- Replace with your Android device's IP address
@@ -77,6 +77,50 @@ I separated the responsibility between sending a command and handling the server
   ```bash
   python client.py
   ```
+
+  ## Project Structure
+
+### Server (Android / Java)
+| Component | Purpose |
+|:---|:---|
+| `SocketServer.java` | Handles server socket operations, communication with the client, and response management. |
+| `CommandHandlerRegistry.java` | Maps each command (via `CommandType`) to a Runnable action. |
+| `CameraUtils.java` | Manages camera opening, capturing photos, and permission logic. |
+| `GetpropUtils.java` | Retrieves system properties using shell commands or reflection. |
+| `Response.java` | Standardizes all responses (text/image/error) sent to the client. |
+| `CommandType.java` | Enum for all valid commands that the client can send. |
+
+### Client (Python)
+| File | Purpose |
+|:---|:---|
+| `main.py` | User interface and command menu. |
+| `ClientSocket.py` | Handles TCP communication: sending commands and receiving responses (text, properties, or image files). |
+| `constants.py` | Constant variables for use in the project. |
+
+## How to Extend the Project
+
+- **To add a new server command**:
+  1. Add a new value in `CommandType.java`.
+  2. Create a new entry in `CommandHandlerRegistry.java` to link it to an action.
+
+- **To add a new client command**:
+  1. Add a new option in `main.py`.
+  2. Implement the sending logic using `ClientSocket.start()`.
+
+- **Response improvements**:
+  Extend `Response.java` to support more types if needed (e.g., video responses).
+
+
+
+
+---
+
+##  Notes
+- The system currently supports **one client at a time**.
+- The Android device must remain unlocked when opening the camera.
+- If connection errors occur, double-check that the IP address and port are correct, and that both devices are on the same network.
+
+  
 
 
 
