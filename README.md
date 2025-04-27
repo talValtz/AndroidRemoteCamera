@@ -52,6 +52,35 @@ I separated the responsibility between sending a command and handling the server
     I extracted the logic for fetching Android system properties into GetpropUtils.
     The utility supports two strategies: reading via getprop shell command or using reflection  (SystemProperties class). This gives the server-side flexibility across different Android    versions, where access restrictions might vary, and isolates platform-specific code into one place.
 
+  ##  How to Run the Project
+
+###  Server Side (Android App)
+- Open the `Server` project in **Android Studio**.
+- Connect your Android device (preferably a real device with a working camera).
+- **Grant Camera permissions** if requested.
+- Click **Run** ▶️ to launch the app.
+- The app will display "Waiting for client..." and open a server on **port 8888**.
+- Make sure the device and the computer are on the same **Wi-Fi network**.
+
+###  Client Side (Python Script)
+- Open the `Client` folder.
+- Open `main.py`.
+- **Update the IP address** at the top of the file:
+  ```python
+  HOST = 'YOUR_PHONE_IP_ADDRESS'  # <-- Replace with your Android device's IP address
+  PORT = 8888
+  ```
+  To find your phone IP:
+  - Open Wi-Fi settings on your phone → Details → IP address.
+
+- Then run the client:
+  ```bash
+  python client.py
+  ```
+
+
+
+
 
 
 
