@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">remoteApp</string>
+    <string name="waiting_connection">Waiting for connection…</string>
+    <string name="waiting_messages">Waiting for messages…</string>
+    <string name="server_started">Server started. Listening on port %1$d</string>
+    <string name="client_connected">Client connected: %1$s</string>
+    <string name="message_received">Message received: %1$s</string>
+    <string name="server_error">Server error: %1$s</string>
+    <string name="client_error">Error handling client: %1$s</string>
+</resources>
