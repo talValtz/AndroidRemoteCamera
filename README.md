@@ -22,13 +22,14 @@ AndroidRemoteCamera/
 │   ├── ClientSocket.py
 │   └── main.py
 │
-├── server/         # Android app (Java) that runs the socket server and camera control logic
+├── server/src/main/java/com/example/remoteapp         # Android app (Java) that runs the socket server and camera control logic
 │   ├── MainActivity.java
 │   ├── SocketServer.java
 │   ├── CameraUtils.java
 │   ├── Response.java
 │   ├── CommandType.java
 │   ├── CommandHandlerRegistry.java
+│   ├── Constants.java
 │   └── GetpropUtils.java
 │
 ├── README.md       # Project documentation (this file)
@@ -83,12 +84,14 @@ I separated the responsibility between sending a command and handling the server
 ### Server (Android / Java)
 | Component | Purpose |
 |:---|:---|
+| `MainActivity.java` | Entry point of the Android app. Initializes the socket server and handles camera permissions and UI messages.|
 | `SocketServer.java` | Handles server socket operations, communication with the client, and response management. |
 | `CommandHandlerRegistry.java` | Maps each command (via `CommandType`) to a Runnable action. |
 | `CameraUtils.java` | Manages camera opening, capturing photos, and permission logic. |
 | `GetpropUtils.java` | Retrieves system properties using shell commands or reflection. |
 | `Response.java` | Standardizes all responses (text/image/error) sent to the client. |
-| `CommandType.java` | Enum for all valid commands that the client can send. |
+| `Constants.java` | Stores constant values used across the app, such as server port number and permission request codes.|
+| `CommandType.java` | Enum for all valid commands that the client can send. 
 
 ### Client (Python)
 | File | Purpose |
