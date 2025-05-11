@@ -20,6 +20,7 @@ AndroidRemoteCamera/
 │
 ├── client/         # Python client that sends commands to the Android server
 │   ├── ClientSocket.py
+│   ├── constants.py
 │   └── main.py
 │
 ├── server/src/main/java/com/example/remoteapp         # Android app (Java) that runs the socket server and camera control logic
